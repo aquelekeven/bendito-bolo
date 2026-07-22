@@ -1767,7 +1767,7 @@
 </aside>
 <div class="toast" id="toast"></div>
 <script>
-    const NUMERO_WHATSAPP = "5511994708221";
+    const NUMERO_WHATSAPP = "5511970521215";
 
     const logoWrap = document.getElementById("logoWrap");
     const carrossel = document.getElementById("carrossel");
@@ -2032,7 +2032,7 @@
       const linhas = itens.map(item => {
         const subtotal = item.preco * item.quantidade;
         const quantidade = item.quantidade > 1 ? `${item.quantidade}x ` : "";
-        return `• ${quantidade}${item.tipo} - ${item.nome} - ${moeda.format(subtotal)}`;
+        return `${item.quantidade}x *${item.tipo}* - ${item.nome} - *${moeda.format(subtotal)}*`;
       });
 
       const mensagem = [
