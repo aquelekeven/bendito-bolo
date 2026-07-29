@@ -2601,6 +2601,20 @@
     .remover-filtro-favoritos:active {
       transform: scale(.97);
     }
+
+    /* Card "Voltar para o início" no filtro de favoritos — v1.9 */
+    body.modo-favoritos .card-voltar-inicio {
+      display: none !important;
+    }
+
+    body.modo-favoritos.tem-muitos-favoritos .card-voltar-inicio {
+      display: flex !important;
+      order: 999;
+    }
+
+    body.modo-favoritos .carrossel {
+      align-items: stretch;
+    }
 </style>
 </head>
 <body data-aba="cardapio">
@@ -2716,7 +2730,7 @@
 <div class="tag">Fatia individual</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
-<article aria-label="Voltar para o início" class="produto card-voltar" id="voltarInicio" role="button" tabindex="0">
+<article aria-label="Voltar para o início" class="produto card-voltar card-voltar-inicio" id="voltarInicio" role="button" tabindex="0">
 <div class="conteudo-voltar">
 <svg aria-hidden="true" viewbox="0 0 24 24">
 <path d="M12 5a7 7 0 1 1-6.32 4H8.1A5 5 0 1 0 12 7H8.83l2.58 2.59L10 11 5 6l5-5 1.41 1.41L8.83 5H12z"></path>
@@ -3412,6 +3426,18 @@
       });
 
       document.body.classList.toggle("modo-favoritos", modoFavoritos);
+
+      const totalFavoritosVisiveis = modoFavoritos ? favoritos.length : 0;
+      document.body.classList.toggle(
+        "tem-muitos-favoritos",
+        modoFavoritos && totalFavoritosVisiveis > 2
+      );
+
+      const cardVoltarInicio = document.querySelector(".card-voltar-inicio");
+      if (cardVoltarInicio) {
+        const mostrarCardVoltar = modoFavoritos && totalFavoritosVisiveis > 2;
+        cardVoltarInicio.classList.toggle("oculto-por-filtro", !mostrarCardVoltar);
+      }
 
       botoesFiltro.forEach(botao => {
         const ativo = botao.dataset.filtro === filtro;
