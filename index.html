@@ -2,17 +2,15 @@
 
 <html lang="pt-BR">
 <head>
-
-<link rel="icon" href="favicon.ico" sizes="any">
-<link rel="icon" type="image/png" href="favicon.png" sizes="32x32">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#8f2148">
-
+<link href="favicon.ico" rel="icon" sizes="any"/>
+<link href="favicon.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="apple-touch-icon.png" rel="apple-touch-icon"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="#8f2148" name="theme-color"/>
+<meta charset="utf-8">
 <meta charset="utf-8"/>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport">
-<meta content="#ef2d63" name="theme-color"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#ef2d63" name="theme-color">
 <title>Bendito Bolo</title>
 <style>
     :root {
@@ -1962,18 +1960,230 @@
       }
     }
 
-</style>
-</meta></head>
-<body data-aba="cardapio">
 
+    /* Favoritos e compartilhamento */
+    .acoes-produto-extras {
+      display: flex;
+      gap: 8px;
+      margin: 10px 0 12px;
+      align-items: center;
+    }
+
+    .botao-favorito,
+    .botao-compartilhar {
+      border: 1px solid rgba(134, 23, 55, .16);
+      background: rgba(255, 255, 255, .78);
+      color: var(--vinho);
+      min-height: 38px;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, color .18s ease;
+    }
+
+    .botao-favorito {
+      width: 42px;
+      flex: 0 0 42px;
+      font-size: 24px;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .botao-favorito.ativo {
+      background: var(--rosa);
+      color: #fff;
+      border-color: var(--rosa);
+    }
+
+    .botao-compartilhar {
+      padding: 0 14px;
+      font-size: 13px;
+    }
+
+    .botao-favorito:active,
+    .botao-compartilhar:active {
+      transform: scale(.96);
+    }
+
+    /* Conteúdo compacto da home */
+    .extras-home {
+      width: min(100% - 28px, 980px);
+      margin: 22px auto 38px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .bloco-encomendas-especiais,
+    .como-funciona {
+      background: rgba(255, 255, 255, .88);
+      border: 1px solid rgba(134, 23, 55, .10);
+      border-radius: 24px;
+      box-shadow: 0 12px 34px rgba(86, 25, 46, .08);
+    }
+
+    .bloco-encomendas-especiais {
+      padding: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .icone-extra {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: #fff1f5;
+      font-size: 27px;
+    }
+
+    .rotulo-extra {
+      display: block;
+      color: var(--rosa);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
+    }
+
+    .bloco-encomendas-especiais h2 {
+      margin: 0 0 5px;
+      color: var(--vinho);
+      font-size: clamp(19px, 4vw, 25px);
+    }
+
+    .bloco-encomendas-especiais p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #69404d;
+    }
+
+    .botao-orcamento {
+      text-decoration: none;
+      white-space: nowrap;
+      background: var(--rosa);
+      color: white;
+      border-radius: 999px;
+      padding: 12px 17px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .como-funciona {
+      padding: 15px 18px 17px;
+    }
+
+    .passos-compactos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .passo-compacto {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 12px;
+      font-weight: 750;
+      color: #5c3140;
+    }
+
+    .passo-compacto b {
+      width: 25px;
+      height: 25px;
+      flex: 0 0 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #fff0f4;
+      color: var(--rosa);
+    }
+
+    .linha-passo {
+      height: 1px;
+      width: 34px;
+      background: rgba(134, 23, 55, .18);
+    }
+
+    /* Agendamento do carrinho */
+    .agendamento-pedido {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .agendamento-pedido label {
+      color: var(--vinho);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .agendamento-pedido select,
+    .agendamento-pedido input {
+      width: 100%;
+      min-height: 44px;
+      border-radius: 13px;
+      border: 1px solid rgba(134, 23, 55, .18);
+      padding: 0 12px;
+      background: #fff;
+      color: var(--texto);
+      font: inherit;
+      font-weight: 650;
+      outline: none;
+    }
+
+    .agendamento-pedido select:focus,
+    .agendamento-pedido input:focus {
+      border-color: var(--rosa);
+      box-shadow: 0 0 0 3px rgba(239, 45, 99, .10);
+    }
+
+    @media (max-width: 640px) {
+      .bloco-encomendas-especiais {
+        grid-template-columns: auto 1fr;
+      }
+
+      .botao-orcamento {
+        grid-column: 1 / -1;
+        text-align: center;
+      }
+
+      .passos-compactos {
+        gap: 5px;
+      }
+
+      .passo-compacto {
+        flex-direction: column;
+        text-align: center;
+        gap: 4px;
+        flex: 1;
+      }
+
+      .linha-passo {
+        width: 18px;
+      }
+
+      .acoes-produto-extras {
+        margin-top: 8px;
+      }
+    }
+</style>
+</meta></meta></head>
+<body data-aba="cardapio">
 <nav aria-label="Navegação principal" class="navegacao-site" role="tablist">
-  <button aria-controls="paginaCardapio" aria-selected="true" class="botao-aba ativa" data-aba="cardapio" role="tab" type="button">
+<button aria-controls="paginaCardapio" aria-selected="true" class="botao-aba ativa" data-aba="cardapio" role="tab" type="button">
     Cardápio
   </button>
-  <button aria-controls="paginaAvaliacoes" aria-selected="false" class="botao-aba" data-aba="avaliacoes" role="tab" type="button">
+<button aria-controls="paginaAvaliacoes" aria-selected="false" class="botao-aba" data-aba="avaliacoes" role="tab" type="button">
     Avaliações
   </button>
-  <button aria-controls="paginaContato" aria-selected="false" class="botao-aba" data-aba="contato" role="tab" type="button">
+<button aria-controls="paginaContato" aria-selected="false" class="botao-aba" data-aba="contato" role="tab" type="button">
     Contato
   </button>
 </nav>
@@ -2006,7 +2216,7 @@
 <div class="tag">Fatia individual · Lançamento</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Ninho com geleia de morango" aria-pressed="false" class="botao-favorito" data-favorito="Ninho com geleia de morango" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Ninho com geleia de morango" class="botao-compartilhar" data-compartilhar="Ninho com geleia de morango" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2022,7 +2232,7 @@
 <div class="tag">600g · Serve até 8 pessoas</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Laranja" aria-pressed="false" class="botao-favorito" data-favorito="Laranja" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Laranja" class="botao-compartilhar" data-compartilhar="Laranja" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2038,7 +2248,7 @@
 <div class="tag">600g · Serve até 8 pessoas</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Milho" aria-pressed="false" class="botao-favorito" data-favorito="Milho" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Milho" class="botao-compartilhar" data-compartilhar="Milho" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2054,7 +2264,7 @@
 <div class="tag">600g · Serve até 8 pessoas</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Cenoura com brigadeiro de chocolate" aria-pressed="false" class="botao-favorito" data-favorito="Cenoura com brigadeiro de chocolate" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Cenoura com brigadeiro de chocolate" class="botao-compartilhar" data-compartilhar="Cenoura com brigadeiro de chocolate" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2070,7 +2280,7 @@
 <div class="tag">Fatia individual</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Red Velvet" aria-pressed="false" class="botao-favorito" data-favorito="Red Velvet" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Red Velvet" class="botao-compartilhar" data-compartilhar="Red Velvet" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2086,7 +2296,7 @@
 <div class="tag">Fatia individual</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Kinder Bueno" aria-pressed="false" class="botao-favorito" data-favorito="Kinder Bueno" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Kinder Bueno" class="botao-compartilhar" data-compartilhar="Kinder Bueno" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2102,7 +2312,7 @@
 <div class="tag">Fatia individual</div>
 <div class="acoes-produto">
 <button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
-<button class="pedir" type="button">Quero esse produto</button>
+<div class="acoes-produto-extras"><button aria-label="Favoritar Brigadeiro com Maracujá" aria-pressed="false" class="botao-favorito" data-favorito="Brigadeiro com Maracujá" title="Adicionar aos favoritos" type="button">♡</button><button aria-label="Compartilhar Brigadeiro com Maracujá" class="botao-compartilhar" data-compartilhar="Brigadeiro com Maracujá" title="Compartilhar produto" type="button">↗ Compartilhar</button></div><button class="pedir" type="button">Quero esse produto</button>
 <button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
 </div>
 </div>
@@ -2122,120 +2332,131 @@
 <span class="barra-progresso" id="barraProgresso"></span>
 </div>
 </div>
+
+<section aria-label="Informações adicionais" class="extras-home">
+<div class="bloco-encomendas-especiais">
+<div aria-hidden="true" class="icone-extra">🎂</div>
+<div>
+<span class="rotulo-extra">Encomendas especiais</span>
+<h2>Um bolo feito para o seu momento</h2>
+<p>Aniversários, presentes, empresas e datas especiais. Conte sua ideia pra gente e combinamos tudo pelo WhatsApp.</p>
+</div>
+<a class="botao-orcamento" href="https://wa.me/5511970521215?text=Ol%C3%A1%21%20Gostaria%20de%20pedir%20um%20or%C3%A7amento%20para%20uma%20encomenda%20especial." rel="noopener noreferrer" target="_blank">
+          Pedir orçamento
+        </a>
+</div>
+<div class="como-funciona">
+<span class="rotulo-extra">Como funciona</span>
+<div class="passos-compactos">
+<div class="passo-compacto"><b>1</b><span>Escolha seus bolos</span></div>
+<div aria-hidden="true" class="linha-passo"></div>
+<div class="passo-compacto"><b>2</b><span>Monte o pedido</span></div>
+<div aria-hidden="true" class="linha-passo"></div>
+<div class="passo-compacto"><b>3</b><span>Finalize no WhatsApp</span></div>
+</div>
+</div>
+</section>
 </main>
 </div>
-
-<section class="pagina-site pagina-avaliacoes" hidden id="paginaAvaliacoes" role="tabpanel">
-  <header class="avaliacoes-cabecalho">
-    <span class="mini-titulo">★ Feito com carinho</span>
-    <h1>Quem prova,<br>aprova.</h1>
-    <p>Alguns recadinhos de quem já adoçou o dia com a Bendito Bolo.</p>
-  </header>
-
-  <div aria-label="Avaliações de clientes" class="carrossel-avaliacoes" id="carrosselAvaliacoes">
-    <article class="card-avaliacao">
-      <div class="topo-avaliacao">
-        <div aria-hidden="true" class="foto-avaliador">AM</div>
-        <div class="dados-avaliador">
-          <strong>Ana Martins</strong>
-          <div aria-label="5 de 5 estrelas" class="estrelas">★★★★★</div>
-        </div>
-      </div>
-      <p class="texto-avaliacao">O bolo chegou lindo, bem recheado e com aquele gostinho de feito em casa. Todo mundo aqui amou!</p>
-    </article>
-
-    <article class="card-avaliacao">
-      <div class="topo-avaliacao">
-        <div aria-hidden="true" class="foto-avaliador">JS</div>
-        <div class="dados-avaliador">
-          <strong>Juliana Souza</strong>
-          <div aria-label="5 de 5 estrelas" class="estrelas">★★★★★</div>
-        </div>
-      </div>
-      <p class="texto-avaliacao">A fatia de Ninho com morango estava maravilhosa. Doce na medida certa e super fresquinha.</p>
-    </article>
-
-    <article class="card-avaliacao">
-      <div class="topo-avaliacao">
-        <div aria-hidden="true" class="foto-avaliador">RC</div>
-        <div class="dados-avaliador">
-          <strong>Rafael Costa</strong>
-          <div aria-label="5 de 5 estrelas" class="estrelas">★★★★★</div>
-        </div>
-      </div>
-      <p class="texto-avaliacao">Atendimento muito atencioso e o bolo de cenoura fez sucesso no café da tarde. Já virou pedido certo.</p>
-    </article>
-
-    <article class="card-avaliacao">
-      <div class="topo-avaliacao">
-        <div aria-hidden="true" class="foto-avaliador">BP</div>
-        <div class="dados-avaliador">
-          <strong>Beatriz Pereira</strong>
-          <div aria-label="4 de 5 estrelas" class="estrelas">★★★★☆</div>
-        </div>
-      </div>
-      <p class="texto-avaliacao">Muito gostoso e caprichado. A embalagem chegou perfeita e a apresentação estava uma graça.</p>
-    </article>
-  </div>
+<section class="pagina-site pagina-avaliacoes" hidden="" id="paginaAvaliacoes" role="tabpanel">
+<header class="avaliacoes-cabecalho">
+<span class="mini-titulo">★ Feito com carinho</span>
+<h1>Quem prova,<br/>aprova.</h1>
+<p>Alguns recadinhos de quem já adoçou o dia com a Bendito Bolo.</p>
+</header>
+<div aria-label="Avaliações de clientes" class="carrossel-avaliacoes" id="carrosselAvaliacoes">
+<article class="card-avaliacao">
+<div class="topo-avaliacao">
+<div aria-hidden="true" class="foto-avaliador">AM</div>
+<div class="dados-avaliador">
+<strong>Ana Martins</strong>
+<div aria-label="5 de 5 estrelas" class="estrelas">★★★★★</div>
+</div>
+</div>
+<p class="texto-avaliacao">O bolo chegou lindo, bem recheado e com aquele gostinho de feito em casa. Todo mundo aqui amou!</p>
+</article>
+<article class="card-avaliacao">
+<div class="topo-avaliacao">
+<div aria-hidden="true" class="foto-avaliador">JS</div>
+<div class="dados-avaliador">
+<strong>Juliana Souza</strong>
+<div aria-label="5 de 5 estrelas" class="estrelas">★★★★★</div>
+</div>
+</div>
+<p class="texto-avaliacao">A fatia de Ninho com morango estava maravilhosa. Doce na medida certa e super fresquinha.</p>
+</article>
+<article class="card-avaliacao">
+<div class="topo-avaliacao">
+<div aria-hidden="true" class="foto-avaliador">RC</div>
+<div class="dados-avaliador">
+<strong>Rafael Costa</strong>
+<div aria-label="5 de 5 estrelas" class="estrelas">★★★★★</div>
+</div>
+</div>
+<p class="texto-avaliacao">Atendimento muito atencioso e o bolo de cenoura fez sucesso no café da tarde. Já virou pedido certo.</p>
+</article>
+<article class="card-avaliacao">
+<div class="topo-avaliacao">
+<div aria-hidden="true" class="foto-avaliador">BP</div>
+<div class="dados-avaliador">
+<strong>Beatriz Pereira</strong>
+<div aria-label="4 de 5 estrelas" class="estrelas">★★★★☆</div>
+</div>
+</div>
+<p class="texto-avaliacao">Muito gostoso e caprichado. A embalagem chegou perfeita e a apresentação estava uma graça.</p>
+</article>
+</div>
 </section>
-
-
-<section class="pagina-site pagina-contato" hidden id="paginaContato" role="tabpanel">
-  <div class="contato-conteudo">
-    <header class="contato-cabecalho">
-      <span class="mini-titulo">✦ Fale com a gente</span>
-      <h1>Tá com vontade<br>de bolo?</h1>
-      <p>
+<section class="pagina-site pagina-contato" hidden="" id="paginaContato" role="tabpanel">
+<div class="contato-conteudo">
+<header class="contato-cabecalho">
+<span class="mini-titulo">✦ Fale com a gente</span>
+<h1>Tá com vontade<br/>de bolo?</h1>
+<p>
         Encomendas, dúvidas ou só vontade de falar de bolo? Fala com a gente por aqui.
       </p>
-    </header>
-
-    <div class="grade-contatos">
-      <a class="card-contato" href="https://www.instagram.com/benditobolo.bolaria" rel="noopener noreferrer" target="_blank">
-        <div class="icone-contato icone-original"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUyNS4zMyA1MjUuMzMiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuNCBCdWlsZCAxMDkpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogdXJsKCNHcmFkaWVudGVfc2VtX25vbWVfMik7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6IHVybCgjR3JhZGllbnRlX3NlbV9ub21lXzcpOwogICAgICB9CgogICAgICAuc3QzIHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CgogICAgICAuc3Q0IHsKICAgICAgICBjbGlwLXBhdGg6IHVybCgjY2xpcHBhdGgpOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aCI+CiAgICAgIDxwYXRoIGlkPSJhIiBjbGFzcz0ic3QwIiBkPSJNNTE4LjEyLDM4OC40OWMwLDIuOC0uMDksOC44Ny0uMjUsMTMuNTUtLjQxLDExLjQ3LTEuMzIsMjYuMjctMi43LDMzLjAxLTIuMDcsMTAuMTMtNS4xOSwxOS43LTkuMjUsMjcuNjYtNC44MSw5LjQyLTEwLjk1LDE3Ljg1LTE4LjI0LDI1LjEzLTcuMjgsNy4yNy0xNS43LDEzLjM4LTI1LjExLDE4LjE3LTgsNC4wOC0xNy42Myw3LjItMjcuODIsOS4yNi02LjY4LDEuMzUtMjEuMzYsMi4yNC0zMi43NiwyLjY0LTQuNjkuMTctMTAuNzYuMjUtMTMuNTUuMjVsLTI1MS42MS0uMDRjLTIuOCwwLTguODYtLjA5LTEzLjU1LS4yNS0xMS40Ny0uNDEtMjYuMjctMS4zMi0zMy4wMS0yLjY5LTEwLjEzLTIuMDctMTkuNy01LjE5LTI3LjY2LTkuMjUtOS40Mi00LjgxLTE3Ljg1LTEwLjk1LTI1LjEzLTE4LjI0LTcuMjctNy4yOC0xMy4zOC0xNS43LTE4LjE3LTI1LjExLTQuMDgtOC03LjItMTcuNjMtOS4yNi0yNy44Mi0xLjM1LTYuNjgtMi4yNC0yMS4zNi0yLjY0LTMyLjc2LS4xNy00LjY5LS4yNS0xMC43Ni0uMjUtMTMuNTVsLjA0LTI1MS42MWMwLTIuOC4wOS04Ljg3LjI1LTEzLjU1LjQxLTExLjQ3LDEuMzItMjYuMjcsMi43LTMzLjAxLDIuMDctMTAuMTMsNS4xOS0xOS43LDkuMjUtMjcuNjYsNC44MS05LjQyLDEwLjk1LTE3Ljg1LDE4LjI0LTI1LjEzLDcuMjgtNy4yNiwxNS43LTEzLjM4LDI1LjExLTE4LjE3LDgtNC4wOCwxNy42My03LjIsMjcuODItOS4yNiw2LjY4LTEuMzUsMjEuMzYtMi4yNCwzMi43Ni0yLjY0LDQuNjktLjE3LDEwLjc2LS4yNSwxMy41NS0uMjVsMjUxLjYxLjA0YzIuOCwwLDguODcuMDksMTMuNTUuMjUsMTEuNDcuNDEsMjYuMjcsMS4zMiwzMy4wMSwyLjcsMTAuMTMsMi4wNywxOS43LDUuMTksMjcuNjYsOS4yNSw5LjQyLDQuODEsMTcuODUsMTAuOTUsMjUuMTMsMTguMjQsNy4yNiw3LjI4LDEzLjM4LDE1LjcsMTguMTcsMjUuMTEsNC4wOCw4LDcuMiwxNy42Myw5LjI2LDI3LjgyLDEuMzUsNi42OCwyLjI0LDIxLjM2LDIuNjQsMzIuNzYuMTcsNC42OS4yNSwxMC43Ni4yNSwxMy41NWwtLjA0LDI1MS42MWgwWiIvPgogICAgPC9jbGlwUGF0aD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iR3JhZGllbnRlX3NlbV9ub21lXzciIGRhdGEtbmFtZT0iR3JhZGllbnRlIHNlbSBub21lIDciIGN4PSIxMTguNDIiIGN5PSItMTYwOS4xNyIgZng9IjExOC40MiIgZnk9Ii0xNjA5LjE3IiByPSIyODA1LjIxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDUuODQgMTMxLjIyKSBzY2FsZSguMjQgLS4yNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIuMDkiIHN0b3AtY29sb3I9IiNmYThmMjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNzgiIHN0b3AtY29sb3I9IiNkODJkN2UiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9IkdyYWRpZW50ZV9zZW1fbm9tZV8yIiBkYXRhLW5hbWU9IkdyYWRpZW50ZSBzZW0gbm9tZSAyIiBjeD0iMTUwNS44NSIgY3k9Ii0xNTM4LjIyIiBmeD0iMTUwNS44NSIgZnk9Ii0xNTM4LjIyIiByPSIyNDY4LjYxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDUuODQgMTMxLjIyKSBzY2FsZSguMjQgLS4yNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNjQiIHN0b3AtY29sb3I9IiM4YzNhYWEiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4YzNhYWEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGNsYXNzPSJzdDQiPgogICAgPGc+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMzMuMjEsNTIzLjQ3Yy0zMS4yNC0xLjQyLTQ4LjIxLTYuNjItNTkuNS0xMS4wMi0xNC45Ni01LjgyLTI1LjYyLTEyLjc2LTM2Ljg1LTIzLjk3LTExLjIzLTExLjIxLTE4LjE3LTIxLjg3LTIzLjk3LTM2LjgzLTQuNC0xMS4yOS05LjYtMjguMjYtMTEuMDItNTkuNS0xLjU2LTMzLjc3LTEuODctNDMuOS0xLjg3LTEyOS40NnMuMzQtOTUuNjgsMS44Ni0xMjkuNDhjMS40Mi0zMS4yNCw2LjY1LTQ4LjE4LDExLjAyLTU5LjUsNS44Mi0xNC45NiwxMi43Ny0yNS42MiwyMy45Ny0zNi44NiwxMS4yMS0xMS4yMSwyMS44Ny0xOC4xNywzNi44NS0yMy45NywxMS4yOS00LjQsMjguMjYtOS42LDU5LjUtMTEuMDIsMzMuNzktMS41NSw0My45My0xLjg2LDEyOS40Ni0xLjg2czk1LjY4LjM0LDEyOS40OCwxLjg2YzMxLjI0LDEuNDIsNDguMTgsNi42NSw1OS41LDExLjAyLDE0Ljk2LDUuNzksMjUuNjIsMTIuNzYsMzYuODUsMjMuOTcsMTEuMjMsMTEuMjEsMTguMTQsMjEuODksMjMuOTcsMzYuODUsNC40LDExLjI5LDkuNiwyOC4yNiwxMS4wMiw1OS41LDEuNTUsMzMuOCwxLjg2LDQzLjkyLDEuODYsMTI5LjQ4cy0uMzEsOTUuNjgtMS44NiwxMjkuNDhjLTEuNDIsMzEuMjQtNi42NSw0OC4yMS0xMS4wMiw1OS41LTUuODIsMTQuOTYtMTIuNzYsMjUuNjItMjMuOTcsMzYuODNzLTIxLjg5LDE4LjE0LTM2Ljg1LDIzLjk3Yy0xMS4yOSw0LjQtMjguMjYsOS42LTU5LjUsMTEuMDItMzMuNzcsMS41NS00My45MiwxLjg2LTEyOS40OCwxLjg2cy05NS42OC0uMy0xMjkuNDUtMS44NiIvPgogICAgICA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTMzLjIxLDUyMy40N2MtMzEuMjQtMS40Mi00OC4yMS02LjYyLTU5LjUtMTEuMDItMTQuOTYtNS44Mi0yNS42Mi0xMi43Ni0zNi44NS0yMy45Ny0xMS4yMy0xMS4yMS0xOC4xNy0yMS44Ny0yMy45Ny0zNi44My00LjQtMTEuMjktOS42LTI4LjI2LTExLjAyLTU5LjUtMS41Ni0zMy43Ny0xLjg3LTQzLjktMS44Ny0xMjkuNDZzLjM0LTk1LjY4LDEuODYtMTI5LjQ4YzEuNDItMzEuMjQsNi42NS00OC4xOCwxMS4wMi01OS41LDUuODItMTQuOTYsMTIuNzctMjUuNjIsMjMuOTctMzYuODYsMTEuMjEtMTEuMjEsMjEuODctMTguMTcsMzYuODUtMjMuOTcsMTEuMjktNC40LDI4LjI2LTkuNiw1OS41LTExLjAyLDMzLjc5LTEuNTUsNDMuOTMtMS44NiwxMjkuNDYtMS44NnM5NS42OC4zNCwxMjkuNDgsMS44NmMzMS4yNCwxLjQyLDQ4LjE4LDYuNjUsNTkuNSwxMS4wMiwxNC45Niw1Ljc5LDI1LjYyLDEyLjc2LDM2Ljg1LDIzLjk3LDExLjIzLDExLjIxLDE4LjE0LDIxLjg5LDIzLjk3LDM2Ljg1LDQuNCwxMS4yOSw5LjYsMjguMjYsMTEuMDIsNTkuNSwxLjU1LDMzLjgsMS44Niw0My45MiwxLjg2LDEyOS40OHMtLjMxLDk1LjY4LTEuODYsMTI5LjQ4Yy0xLjQyLDMxLjI0LTYuNjUsNDguMjEtMTEuMDIsNTkuNS01LjgyLDE0Ljk2LTEyLjc2LDI1LjYyLTIzLjk3LDM2Ljgzcy0yMS44OSwxOC4xNC0zNi44NSwyMy45N2MtMTEuMjksNC40LTI4LjI2LDkuNi01OS41LDExLjAyLTMzLjc3LDEuNTUtNDMuOTIsMS44Ni0xMjkuNDgsMS44NnMtOTUuNjgtLjMtMTI5LjQ1LTEuODYiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTIwOS40NywyNjIuNjdjMC0yOS4zOCwyMy44MS01My4yMSw1My4yLTUzLjIxczUzLjIxLDIzLjgzLDUzLjIxLDUzLjIxLTIzLjgzLDUzLjIxLTUzLjIxLDUzLjIxLTUzLjItMjMuODMtNTMuMi01My4yMU0xODAuNzEsMjYyLjY3YzAsNDUuMjcsMzYuNjksODEuOTYsODEuOTYsODEuOTZzODEuOTYtMzYuNjksODEuOTYtODEuOTYtMzYuNjktODEuOTYtODEuOTYtODEuOTYtODEuOTYsMzYuNjktODEuOTYsODEuOTZNMzI4LjczLDE3Ny40NWMwLDEwLjU4LDguNTcsMTkuMTYsMTkuMTUsMTkuMTYsMTAuNTgsMCwxOS4xNi04LjU3LDE5LjE2LTE5LjE1cy04LjU3LTE5LjE2LTE5LjE1LTE5LjE2aDBjLTEwLjU3LDAtMTkuMTUsOC41Ny0xOS4xNSwxOS4xNU0xOTguMTksMzkyLjU5Yy0xNS41Ni0uNzEtMjQuMDItMy4zLTI5LjY0LTUuNDktNy40NS0yLjktMTIuNzctNi4zNi0xOC4zNi0xMS45NC01LjU5LTUuNTgtOS4wNS0xMC44OS0xMS45NC0xOC4zNS0yLjE5LTUuNjItNC43OC0xNC4wOC01LjQ5LTI5LjY0LS43Ny0xNi44My0uOTMtMjEuODgtLjkzLTY0LjUxcy4xNy00Ny42Ny45My02NC41MWMuNzEtMTUuNTYsMy4zMi0yNC4wMSw1LjQ5LTI5LjY0LDIuOS03LjQ1LDYuMzYtMTIuNzcsMTEuOTQtMTguMzZzMTAuODktOS4wNSwxOC4zNi0xMS45NGM1LjYyLTIuMTksMTQuMDgtNC43OCwyOS42NC01LjQ5LDE2LjgzLS43NywyMS44OC0uOTMsNjQuNDktLjkzczQ3LjY3LjE2LDY0LjUxLjkzYzE1LjU2LjcxLDI0LjAxLDMuMzIsMjkuNjQsNS40OSw3LjQ1LDIuODksMTIuNzcsNi4zNiwxOC4zNiwxMS45NCw1LjU5LDUuNTgsOS4wNCwxMC45MSwxMS45NCwxOC4zNiwyLjE5LDUuNjIsNC43OCwxNC4wOCw1LjQ5LDI5LjY0Ljc3LDE2Ljg0LjkzLDIxLjg4LjkzLDY0LjUxcy0uMTUsNDcuNjctLjkzLDY0LjUxYy0uNzEsMTUuNTYtMy4zMSwyNC4wMi01LjQ5LDI5LjY0LTIuOSw3LjQ1LTYuMzYsMTIuNzctMTEuOTQsMTguMzUtNS41OCw1LjU4LTEwLjkxLDkuMDQtMTguMzYsMTEuOTQtNS42MiwyLjE5LTE0LjA4LDQuNzgtMjkuNjQsNS40OS0xNi44My43Ny0yMS44OC45My02NC41MS45M3MtNDcuNjctLjE1LTY0LjQ5LS45M00xOTYuODYsMTA0LjAxYy0xNi45OS43Ny0yOC42LDMuNDctMzguNzQsNy40MS0xMC41LDQuMDctMTkuMzksOS41NC0yOC4yOCwxOC40MS04Ljg4LDguODctMTQuMzQsMTcuNzctMTguNDEsMjguMjgtMy45NSwxMC4xNS02LjY0LDIxLjc1LTcuNDEsMzguNzQtLjc5LDE3LjAyLS45NywyMi40Ni0uOTcsNjUuODFzLjE4LDQ4Ljc5Ljk3LDY1LjgxYy43NywxNi45OSwzLjQ3LDI4LjYsNy40MSwzOC43NCw0LjA3LDEwLjUsOS41MywxOS40MSwxOC40MSwyOC4yOCw4Ljg4LDguODcsMTcuNzcsMTQuMzIsMjguMjgsMTguNDEsMTAuMTYsMy45NSwyMS43NSw2LjY0LDM4Ljc0LDcuNDEsMTcuMDMuNzcsMjIuNDYuOTcsNjUuODEuOTdzNDguNzktLjE4LDY1LjgxLS45N2MxNi45OS0uNzcsMjguNi0zLjQ3LDM4Ljc0LTcuNDEsMTAuNS00LjA5LDE5LjM5LTkuNTQsMjguMjgtMTguNDFzMTQuMzItMTcuNzgsMTguNDEtMjguMjhjMy45NS0xMC4xNSw2LjY1LTIxLjc1LDcuNDEtMzguNzQuNzctMTcuMDMuOTUtMjIuNDYuOTUtNjUuODFzLS4xOC00OC43OS0uOTUtNjUuODFjLS43Ny0xNi45OS0zLjQ3LTI4LjYtNy40MS0zOC43NC00LjA5LTEwLjUtOS41NC0xOS4zOS0xOC40MS0yOC4yOC04Ljg3LTguODgtMTcuNzgtMTQuMzQtMjguMjYtMTguNDEtMTAuMTYtMy45NS0yMS43Ni02LjY1LTM4Ljc0LTcuNDEtMTcuMDItLjc4LTIyLjQ2LS45Ny02NS44LS45N3MtNDguNzkuMTgtNjUuODIuOTciLz4KPC9zdmc+" alt="Instagram"></div>
-        <div class="texto-contato">
-          <small>Instagram</small>
-          <strong>@benditobolo.bolaria</strong>
-          <span>Veja novidades, sabores e bastidores.</span>
-        </div>
-        <span aria-hidden="true" class="seta-contato">›</span>
-      </a>
-
-      <a class="card-contato" href="https://wa.me/5511970521215" rel="noopener noreferrer" target="_blank">
-        <div class="icone-contato icone-original"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMSA1MTEiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuNCBCdWlsZCAxMDkpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogdXJsKCNHcmFkaWVudGVfc2VtX25vbWVfNik7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkdyYWRpZW50ZV9zZW1fbm9tZV82IiBkYXRhLW5hbWU9IkdyYWRpZW50ZSBzZW0gbm9tZSA2IiB4MT0iMzI2LjkiIHkxPSI1MTMuMTQiIHgyPSIzMjYuOSIgeTI9Ii0xNDAuOTQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjExIDQwMC44OSkgc2NhbGUoLjc4IC0uNzgpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYxZmQ3ZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyYmI4MjYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGlkPSJhIiBjbGFzcz0ic3QwIiBkPSJNNTEwLjk2LDM4MS4zMmMwLDIuOC0uMDksOC44Ny0uMjUsMTMuNTUtLjQxLDExLjQ3LTEuMzIsMjYuMjctMi43LDMzLjAxLTIuMDcsMTAuMTMtNS4xOSwxOS43LTkuMjUsMjcuNjYtNC44MSw5LjQyLTEwLjk1LDE3Ljg1LTE4LjI0LDI1LjEzLTcuMjgsNy4yNy0xNS43LDEzLjM4LTI1LjExLDE4LjE3LTgsNC4wOC0xNy42Myw3LjItMjcuODIsOS4yNi02LjY4LDEuMzUtMjEuMzYsMi4yNC0zMi43NiwyLjY0LTQuNjkuMTctMTAuNzYuMjUtMTMuNTUuMjVsLTI1MS42MS0uMDRjLTIuOCwwLTguODYtLjA5LTEzLjU1LS4yNS0xMS40Ny0uNDEtMjYuMjctMS4zMi0zMy4wMS0yLjY5LTEwLjEzLTIuMDctMTkuNy01LjE5LTI3LjY2LTkuMjUtOS40Mi00LjgxLTE3Ljg1LTEwLjk1LTI1LjEzLTE4LjI0LTcuMjctNy4yOC0xMy4zOC0xNS43LTE4LjE3LTI1LjExLTQuMDgtOC03LjItMTcuNjMtOS4yNi0yNy44Mi0xLjM1LTYuNjgtMi4yNC0yMS4zNi0yLjY0LTMyLjc2LS4xNy00LjY5LS4yNS0xMC43Ni0uMjUtMTMuNTVsLjA0LTI1MS42MWMwLTIuOC4wOS04Ljg3LjI1LTEzLjU1LjQxLTExLjQ3LDEuMzItMjYuMjcsMi43LTMzLjAxLDIuMDctMTAuMTMsNS4xOS0xOS43LDkuMjUtMjcuNjYsNC44MS05LjQyLDEwLjk1LTE3Ljg1LDE4LjI0LTI1LjEzLDcuMjgtNy4yNiwxNS43LTEzLjM4LDI1LjExLTE4LjE3LDgtNC4wOCwxNy42My03LjIsMjcuODItOS4yNiw2LjY4LTEuMzUsMjEuMzYtMi4yNCwzMi43Ni0yLjY0LDQuNjktLjE3LDEwLjc2LS4yNSwxMy41NS0uMjVsMjUxLjYxLjA0YzIuOCwwLDguODcuMDksMTMuNTUuMjUsMTEuNDcuNDEsMjYuMjcsMS4zMiwzMy4wMSwyLjcsMTAuMTMsMi4wNywxOS43LDUuMTksMjcuNjYsOS4yNSw5LjQyLDQuODEsMTcuODUsMTAuOTUsMjUuMTMsMTguMjQsNy4yNiw3LjI4LDEzLjM4LDE1LjcsMTguMTcsMjUuMTEsNC4wOCw4LDcuMiwxNy42Myw5LjI2LDI3LjgyLDEuMzUsNi42OCwyLjI0LDIxLjM2LDIuNjQsMzIuNzYuMTcsNC42OS4yNSwxMC43Ni4yNSwxMy41NWwtLjA0LDI1MS42MWgwWiIvPgogIDxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0zOTAuODgsMTIwLjg5Yy0zNC42LTM0LjYyLTgwLjYtNTMuNy0xMjkuNjItNTMuNzItMTAxLDAtMTgzLjIsODIuMTctMTgzLjI0LDE4My4xNy0uMDEsMzIuMjgsOC40Miw2My44LDI0LjQ2LDkxLjU4bC0yNiw5NC45Miw5Ny4xNC0yNS40N2MyNi43NiwxNC41OSw1Ni45LDIyLjI4LDg3LjU3LDIyLjNoLjA4YzEwMC45OSwwLDE4My4yLTgyLjE4LDE4My4yNC0xODMuMTguMDItNDguOTUtMTkuMDItOTQuOTctNTMuNjItMTI5LjU5aDBaTTI2MS4yNiw0MDIuNzNoLS4wNmMtMjcuMzMtLjAxLTU0LjEzLTcuMzUtNzcuNTItMjEuMjJsLTUuNTYtMy4zLTU3LjY0LDE1LjEyLDE1LjM5LTU2LjE4LTMuNjItNS43NmMtMTUuMjUtMjQuMjQtMjMuMy01Mi4yNi0yMy4yOS04MS4wMy4wMy04My45NSw2OC4zNi0xNTIuMjQsMTUyLjM2LTE1Mi4yNCw0MC42OC4wMiw3OC45MiwxNS44NywxMDcuNjcsNDQuNjUsMjguNzUsMjguNzgsNDQuNTgsNjcuMDMsNDQuNTcsMTA3LjcxLS4wMyw4My45NS02OC4zNiwxNTIuMjUtMTUyLjMsMTUyLjI1aDBaTTM0NC44LDI4OC43Yy00LjU4LTIuMjktMjcuMDktMTMuMzYtMzEuMjktMTQuODktNC4yLTEuNTMtNy4yNS0yLjI5LTEwLjMsMi4yOS0zLjA1LDQuNTgtMTEuODMsMTQuODktMTQuNSwxNy45NS0yLjY3LDMuMDUtNS4zNCwzLjQ0LTkuOTIsMS4xNS00LjU4LTIuMjktMTkuMzMtNy4xMi0zNi44Mi0yMi43Mi0xMy42MS0xMi4xNC0yMi44LTI3LjEzLTI1LjQ3LTMxLjcxLTIuNjctNC41OC0uMjgtNy4wNiwyLjAxLTkuMzQsMi4wNi0yLjA1LDQuNTgtNS4zNSw2Ljg3LTguMDIsMi4yOS0yLjY3LDMuMDUtNC41OCw0LjU4LTcuNjQsMS41My0zLjA1Ljc2LTUuNzMtLjM4LTguMDItMS4xNC0yLjI5LTEwLjMtMjQuODItMTQuMTItMzMuOTgtMy43Mi04LjkzLTcuNDktNy43Mi0xMC4zLTcuODYtMi42Ny0uMTMtNS43Mi0uMTYtOC43Ny0uMTZzLTguMDEsMS4xNS0xMi4yMSw1LjczLTE2LjAyLDE1LjY2LTE2LjAyLDM4LjE4LDE2LjQxLDQ0LjI5LDE4LjcsNDcuMzVjMi4yOSwzLjA1LDMyLjI4LDQ5LjI5LDc4LjIxLDY5LjExLDEwLjkyLDQuNzIsMTkuNDUsNy41MywyNi4xLDkuNjQsMTAuOTcsMy40OCwyMC45NSwyLjk5LDI4Ljg0LDEuODEsOC44LTEuMzEsMjcuMDktMTEuMDcsMzAuOS0yMS43NiwzLjgyLTEwLjY5LDMuODItMTkuODYsMi42Ny0yMS43NnMtNC4yLTMuMDUtOC43Ny01LjM1aDBaIi8+Cjwvc3ZnPg==" alt="WhatsApp"></div>
-        <div class="texto-contato">
-          <small>WhatsApp</small>
-          <strong>(11) 97052-1215</strong>
-        </div>
-        <span aria-hidden="true" class="seta-contato">›</span>
-      </a>
-
-      <div class="card-contato">
-        <div class="icone-contato icone-original"><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMSA1MTEiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuNCBCdWlsZCAxMDkpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogdXJsKCNHcmFkaWVudGVfc2VtX25vbWVfMjUpOwogICAgICB9CgogICAgICAuc3QxIHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJHcmFkaWVudGVfc2VtX25vbWVfMjUiIGRhdGEtbmFtZT0iR3JhZGllbnRlIHNlbSBub21lIDI1IiB4MT0iMzI2LjkiIHkxPSI1MTMuMTQiIHgyPSIzMjYuOSIgeTI9Ii0xNDAuOTQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjExIDQwMC44OSkgc2NhbGUoLjc4IC0uNzgpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVlNTE5ZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1MjQ1ODYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGlkPSJhIiBjbGFzcz0ic3QwIiBkPSJNNTEwLjk2LDM4MS4zMmMwLDIuOC0uMDksOC44Ny0uMjUsMTMuNTUtLjQxLDExLjQ3LTEuMzIsMjYuMjctMi43LDMzLjAxLTIuMDcsMTAuMTMtNS4xOSwxOS43LTkuMjUsMjcuNjYtNC44MSw5LjQyLTEwLjk1LDE3Ljg1LTE4LjI0LDI1LjEzLTcuMjgsNy4yNy0xNS43LDEzLjM4LTI1LjExLDE4LjE3LTgsNC4wOC0xNy42Myw3LjItMjcuODIsOS4yNi02LjY4LDEuMzUtMjEuMzYsMi4yNC0zMi43NiwyLjY0LTQuNjkuMTctMTAuNzYuMjUtMTMuNTUuMjVsLTI1MS42MS0uMDRjLTIuOCwwLTguODYtLjA5LTEzLjU1LS4yNS0xMS40Ny0uNDEtMjYuMjctMS4zMi0zMy4wMS0yLjY5LTEwLjEzLTIuMDctMTkuNy01LjE5LTI3LjY2LTkuMjUtOS40Mi00LjgxLTE3Ljg1LTEwLjk1LTI1LjEzLTE4LjI0LTcuMjctNy4yOC0xMy4zOC0xNS43LTE4LjE3LTI1LjExLTQuMDgtOC03LjItMTcuNjMtOS4yNi0yNy44Mi0xLjM1LTYuNjgtMi4yNC0yMS4zNi0yLjY0LTMyLjc2LS4xNy00LjY5LS4yNS0xMC43Ni0uMjUtMTMuNTVsLjA0LTI1MS42MWMwLTIuOC4wOS04Ljg3LjI1LTEzLjU1LjQxLTExLjQ3LDEuMzItMjYuMjcsMi43LTMzLjAxLDIuMDctMTAuMTMsNS4xOS0xOS43LDkuMjUtMjcuNjYsNC44MS05LjQyLDEwLjk1LTE3Ljg1LDE4LjI0LTI1LjEzLDcuMjgtNy4yNiwxNS43LTEzLjM4LDI1LjExLTE4LjE3LDgtNC4wOCwxNy42My03LjIsMjcuODItOS4yNiw2LjY4LTEuMzUsMjEuMzYtMi4yNCwzMi43Ni0yLjY0LDQuNjktLjE3LDEwLjc2LS4yNSwxMy41NS0uMjVsMjUxLjYxLjA0YzIuOCwwLDguODcuMDksMTMuNTUuMjUsMTEuNDcuNDEsMjYuMjcsMS4zMiwzMy4wMSwyLjcsMTAuMTMsMi4wNywxOS43LDUuMTksMjcuNjYsOS4yNSw5LjQyLDQuODEsMTcuODUsMTAuOTUsMjUuMTMsMTguMjQsNy4yNiw3LjI4LDEzLjM4LDE1LjcsMTguMTcsMjUuMTEsNC4wOCw4LDcuMiwxNy42Myw5LjI2LDI3LjgyLDEuMzUsNi42OCwyLjI0LDIxLjM2LDIuNjQsMzIuNzYuMTcsNC42OS4yNSwxMC43Ni4yNSwxMy41NWwtLjA0LDI1MS42MWgwWiIvPgogIDxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0zODkuMDQsMTgwLjE0Yy0xLjIxLTYuMS0zLjkxLTExLjY3LTcuNjktMTYuMjgtLjgtMS0xLjYzLTEuOS0yLjUzLTIuOC02LjY5LTYuNzItMTYuMDgtMTAuOTEtMjYuMzMtMTAuOTFoLTE5My45OWMtMTAuMjUsMC0xOS42MSw0LjE5LTI2LjMzLDEwLjkxLS45LjktMS43MywxLjgtMi41MywyLjgtMy43OCw0LjYxLTYuNDgsMTAuMTktNy42NiwxNi4yOC0uNDgsMi4zNS0uNzMsNC43OC0uNzMsNy4yNHYxMzYuMjVjMCw1LjIzLDEuMTEsMTAuMjUsMy4wOSwxNC43OSwxLjgzLDQuMzMsNC41NCw4LjI1LDcuODMsMTEuNTQuODMuODMsMS42NiwxLjYsMi41NywyLjM2LDYuNDQsNS4zNCwxNC43Niw4LjU2LDIzLjc2LDguNTZoMTkzLjk5YzkuMDEsMCwxNy4zNi0zLjIyLDIzLjc3LTguNTkuOS0uNzMsMS43My0xLjQ5LDIuNTYtMi4zMiwzLjI5LTMuMjksNS45OS03LjIxLDcuODYtMTEuNTR2LS4wM2MxLjk4LTQuNTQsMy4wNS05LjUzLDMuMDUtMTQuNzV2LTEzNi4yNWMwLTIuNDYtLjI0LTQuODktLjY5LTcuMjRaTTE0NS42NSwxNzQuNTJjMy4zMy0zLjMyLDcuOC01LjM0LDEyLjg1LTUuMzRoMTkzLjk5YzUuMDYsMCw5LjU3LDIuMDEsMTIuODUsNS4zNC41OS41OSwxLjE0LDEuMjUsMS42MywxLjkxbC0xMDEuNjgsODguNjFjLTIuOCwyLjQ2LTYuMjcsMy42Ny05LjgsMy42N3MtNi45Ni0xLjIxLTkuOC0zLjY3bC0xMDEuNjQtODguNjVjLjQ1LS42NiwxLTEuMjgsMS41OS0xLjg3Wk0xNDAuMzIsMzIzLjYzdi0xMjcuNTJsNzMuNTgsNjQuMTktNzMuNTQsNjQuMTJjLS4wNC0uMjQtLjA0LS41Mi0uMDQtLjc5Wk0zNTIuNSwzNDEuODFoLTE5My45OWMtMy4yOSwwLTYuMzgtLjg3LTkuMDEtMi4zOWw3Ny41OS02Ny42Miw3LjI0LDYuM2M2LjA2LDUuMjcsMTMuNjUsNy45NCwyMS4xNiw3Ljk0czE1LjE0LTIuNjcsMjEuMi03Ljk0bDcuMjQtNi4zLDc3LjU2LDY3LjYyYy0yLjYzLDEuNTItNS43MiwyLjM5LTkuMDEsMi4zOVpNMzcwLjY4LDMyMy42M2MwLC4yOCwwLC41NS0uMDQuNzlsLTczLjU0LTY0LjA4LDczLjU4LTY0LjE5djEyNy40OFoiLz4KPC9zdmc+" alt="E-mail"></div>
-        <div class="texto-contato">
-          <small>E-mail</small>
-          <strong>Em breve, um e-mail nosso para te atender.</strong>
-        </div>
-      </div>
-
-      <div class="card-contato" role="group" aria-label="Responsável pelo atendimento">
-        <div aria-hidden="true" class="icone-contato">R</div>
-        <div class="texto-contato">
-          <small>Quem atende</small>
-          <strong>Regiane</strong>
-          <span>Ela vai te ajudar com seu pedido.</span>
-        </div>
-      </div>
-
-      <div class="card-horario">
-        <small>Horário de atendimento</small>
-        <strong>Segunda a sábado · 8h às 19h</strong>
-        <span>Mensagens enviadas fora desse horário serão respondidas assim que possível.</span>
-      </div>
-    </div>
-  </div>
+</header>
+<div class="grade-contatos">
+<a class="card-contato" href="https://www.instagram.com/benditobolo.bolaria" rel="noopener noreferrer" target="_blank">
+<div class="icone-contato icone-original"><img alt="Instagram" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUyNS4zMyA1MjUuMzMiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuNCBCdWlsZCAxMDkpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogbm9uZTsKICAgICAgfQoKICAgICAgLnN0MSB7CiAgICAgICAgZmlsbDogdXJsKCNHcmFkaWVudGVfc2VtX25vbWVfMik7CiAgICAgIH0KCiAgICAgIC5zdDIgewogICAgICAgIGZpbGw6IHVybCgjR3JhZGllbnRlX3NlbV9ub21lXzcpOwogICAgICB9CgogICAgICAuc3QzIHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CgogICAgICAuc3Q0IHsKICAgICAgICBjbGlwLXBhdGg6IHVybCgjY2xpcHBhdGgpOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGNsaXBQYXRoIGlkPSJjbGlwcGF0aCI+CiAgICAgIDxwYXRoIGlkPSJhIiBjbGFzcz0ic3QwIiBkPSJNNTE4LjEyLDM4OC40OWMwLDIuOC0uMDksOC44Ny0uMjUsMTMuNTUtLjQxLDExLjQ3LTEuMzIsMjYuMjctMi43LDMzLjAxLTIuMDcsMTAuMTMtNS4xOSwxOS43LTkuMjUsMjcuNjYtNC44MSw5LjQyLTEwLjk1LDE3Ljg1LTE4LjI0LDI1LjEzLTcuMjgsNy4yNy0xNS43LDEzLjM4LTI1LjExLDE4LjE3LTgsNC4wOC0xNy42Myw3LjItMjcuODIsOS4yNi02LjY4LDEuMzUtMjEuMzYsMi4yNC0zMi43NiwyLjY0LTQuNjkuMTctMTAuNzYuMjUtMTMuNTUuMjVsLTI1MS42MS0uMDRjLTIuOCwwLTguODYtLjA5LTEzLjU1LS4yNS0xMS40Ny0uNDEtMjYuMjctMS4zMi0zMy4wMS0yLjY5LTEwLjEzLTIuMDctMTkuNy01LjE5LTI3LjY2LTkuMjUtOS40Mi00LjgxLTE3Ljg1LTEwLjk1LTI1LjEzLTE4LjI0LTcuMjctNy4yOC0xMy4zOC0xNS43LTE4LjE3LTI1LjExLTQuMDgtOC03LjItMTcuNjMtOS4yNi0yNy44Mi0xLjM1LTYuNjgtMi4yNC0yMS4zNi0yLjY0LTMyLjc2LS4xNy00LjY5LS4yNS0xMC43Ni0uMjUtMTMuNTVsLjA0LTI1MS42MWMwLTIuOC4wOS04Ljg3LjI1LTEzLjU1LjQxLTExLjQ3LDEuMzItMjYuMjcsMi43LTMzLjAxLDIuMDctMTAuMTMsNS4xOS0xOS43LDkuMjUtMjcuNjYsNC44MS05LjQyLDEwLjk1LTE3Ljg1LDE4LjI0LTI1LjEzLDcuMjgtNy4yNiwxNS43LTEzLjM4LDI1LjExLTE4LjE3LDgtNC4wOCwxNy42My03LjIsMjcuODItOS4yNiw2LjY4LTEuMzUsMjEuMzYtMi4yNCwzMi43Ni0yLjY0LDQuNjktLjE3LDEwLjc2LS4yNSwxMy41NS0uMjVsMjUxLjYxLjA0YzIuOCwwLDguODcuMDksMTMuNTUuMjUsMTEuNDcuNDEsMjYuMjcsMS4zMiwzMy4wMSwyLjcsMTAuMTMsMi4wNywxOS43LDUuMTksMjcuNjYsOS4yNSw5LjQyLDQuODEsMTcuODUsMTAuOTUsMjUuMTMsMTguMjQsNy4yNiw3LjI4LDEzLjM4LDE1LjcsMTguMTcsMjUuMTEsNC4wOCw4LDcuMiwxNy42Myw5LjI2LDI3LjgyLDEuMzUsNi42OCwyLjI0LDIxLjM2LDIuNjQsMzIuNzYuMTcsNC42OS4yNSwxMC43Ni4yNSwxMy41NWwtLjA0LDI1MS42MWgwWiIvPgogICAgPC9jbGlwUGF0aD4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iR3JhZGllbnRlX3NlbV9ub21lXzciIGRhdGEtbmFtZT0iR3JhZGllbnRlIHNlbSBub21lIDciIGN4PSIxMTguNDIiIGN5PSItMTYwOS4xNyIgZng9IjExOC40MiIgZnk9Ii0xNjA5LjE3IiByPSIyODA1LjIxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDUuODQgMTMxLjIyKSBzY2FsZSguMjQgLS4yNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIuMDkiIHN0b3AtY29sb3I9IiNmYThmMjEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNzgiIHN0b3AtY29sb3I9IiNkODJkN2UiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9IkdyYWRpZW50ZV9zZW1fbm9tZV8yIiBkYXRhLW5hbWU9IkdyYWRpZW50ZSBzZW0gbm9tZSAyIiBjeD0iMTUwNS44NSIgY3k9Ii0xNTM4LjIyIiBmeD0iMTUwNS44NSIgZnk9Ii0xNTM4LjIyIiByPSIyNDY4LjYxIiBncmFkaWVudFRyYW5zZm9ybT0idHJhbnNsYXRlKDUuODQgMTMxLjIyKSBzY2FsZSguMjQgLS4yNCkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIuNjQiIHN0b3AtY29sb3I9IiM4YzNhYWEiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM4YzNhYWEiLz4KICAgIDwvcmFkaWFsR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxnIGNsYXNzPSJzdDQiPgogICAgPGc+CiAgICAgIDxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMzMuMjEsNTIzLjQ3Yy0zMS4yNC0xLjQyLTQ4LjIxLTYuNjItNTkuNS0xMS4wMi0xNC45Ni01LjgyLTI1LjYyLTEyLjc2LTM2Ljg1LTIzLjk3LTExLjIzLTExLjIxLTE4LjE3LTIxLjg3LTIzLjk3LTM2LjgzLTQuNC0xMS4yOS05LjYtMjguMjYtMTEuMDItNTkuNS0xLjU2LTMzLjc3LTEuODctNDMuOS0xLjg3LTEyOS40NnMuMzQtOTUuNjgsMS44Ni0xMjkuNDhjMS40Mi0zMS4yNCw2LjY1LTQ4LjE4LDExLjAyLTU5LjUsNS44Mi0xNC45NiwxMi43Ny0yNS42MiwyMy45Ny0zNi44NiwxMS4yMS0xMS4yMSwyMS44Ny0xOC4xNywzNi44NS0yMy45NywxMS4yOS00LjQsMjguMjYtOS42LDU5LjUtMTEuMDIsMzMuNzktMS41NSw0My45My0xLjg2LDEyOS40Ni0xLjg2czk1LjY4LjM0LDEyOS40OCwxLjg2YzMxLjI0LDEuNDIsNDguMTgsNi42NSw1OS41LDExLjAyLDE0Ljk2LDUuNzksMjUuNjIsMTIuNzYsMzYuODUsMjMuOTcsMTEuMjMsMTEuMjEsMTguMTQsMjEuODksMjMuOTcsMzYuODUsNC40LDExLjI5LDkuNiwyOC4yNiwxMS4wMiw1OS41LDEuNTUsMzMuOCwxLjg2LDQzLjkyLDEuODYsMTI5LjQ4cy0uMzEsOTUuNjgtMS44NiwxMjkuNDhjLTEuNDIsMzEuMjQtNi42NSw0OC4yMS0xMS4wMiw1OS41LTUuODIsMTQuOTYtMTIuNzYsMjUuNjItMjMuOTcsMzYuODNzLTIxLjg5LDE4LjE0LTM2Ljg1LDIzLjk3Yy0xMS4yOSw0LjQtMjguMjYsOS42LTU5LjUsMTEuMDItMzMuNzcsMS41NS00My45MiwxLjg2LTEyOS40OCwxLjg2cy05NS42OC0uMy0xMjkuNDUtMS44NiIvPgogICAgICA8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMTMzLjIxLDUyMy40N2MtMzEuMjQtMS40Mi00OC4yMS02LjYyLTU5LjUtMTEuMDItMTQuOTYtNS44Mi0yNS42Mi0xMi43Ni0zNi44NS0yMy45Ny0xMS4yMy0xMS4yMS0xOC4xNy0yMS44Ny0yMy45Ny0zNi44My00LjQtMTEuMjktOS42LTI4LjI2LTExLjAyLTU5LjUtMS41Ni0zMy43Ny0xLjg3LTQzLjktMS44Ny0xMjkuNDZzLjM0LTk1LjY4LDEuODYtMTI5LjQ4YzEuNDItMzEuMjQsNi42NS00OC4xOCwxMS4wMi01OS41LDUuODItMTQuOTYsMTIuNzctMjUuNjIsMjMuOTctMzYuODYsMTEuMjEtMTEuMjEsMjEuODctMTguMTcsMzYuODUtMjMuOTcsMTEuMjktNC40LDI4LjI2LTkuNiw1OS41LTExLjAyLDMzLjc5LTEuNTUsNDMuOTMtMS44NiwxMjkuNDYtMS44NnM5NS42OC4zNCwxMjkuNDgsMS44NmMzMS4yNCwxLjQyLDQ4LjE4LDYuNjUsNTkuNSwxMS4wMiwxNC45Niw1Ljc5LDI1LjYyLDEyLjc2LDM2Ljg1LDIzLjk3LDExLjIzLDExLjIxLDE4LjE0LDIxLjg5LDIzLjk3LDM2Ljg1LDQuNCwxMS4yOSw5LjYsMjguMjYsMTEuMDIsNTkuNSwxLjU1LDMzLjgsMS44Niw0My45MiwxLjg2LDEyOS40OHMtLjMxLDk1LjY4LTEuODYsMTI5LjQ4Yy0xLjQyLDMxLjI0LTYuNjUsNDguMjEtMTEuMDIsNTkuNS01LjgyLDE0Ljk2LTEyLjc2LDI1LjYyLTIzLjk3LDM2Ljgzcy0yMS44OSwxOC4xNC0zNi44NSwyMy45N2MtMTEuMjksNC40LTI4LjI2LDkuNi01OS41LDExLjAyLTMzLjc3LDEuNTUtNDMuOTIsMS44Ni0xMjkuNDgsMS44NnMtOTUuNjgtLjMtMTI5LjQ1LTEuODYiLz4KICAgIDwvZz4KICA8L2c+CiAgPHBhdGggY2xhc3M9InN0MyIgZD0iTTIwOS40NywyNjIuNjdjMC0yOS4zOCwyMy44MS01My4yMSw1My4yLTUzLjIxczUzLjIxLDIzLjgzLDUzLjIxLDUzLjIxLTIzLjgzLDUzLjIxLTUzLjIxLDUzLjIxLTUzLjItMjMuODMtNTMuMi01My4yMU0xODAuNzEsMjYyLjY3YzAsNDUuMjcsMzYuNjksODEuOTYsODEuOTYsODEuOTZzODEuOTYtMzYuNjksODEuOTYtODEuOTYtMzYuNjktODEuOTYtODEuOTYtODEuOTYtODEuOTYsMzYuNjktODEuOTYsODEuOTZNMzI4LjczLDE3Ny40NWMwLDEwLjU4LDguNTcsMTkuMTYsMTkuMTUsMTkuMTYsMTAuNTgsMCwxOS4xNi04LjU3LDE5LjE2LTE5LjE1cy04LjU3LTE5LjE2LTE5LjE1LTE5LjE2aDBjLTEwLjU3LDAtMTkuMTUsOC41Ny0xOS4xNSwxOS4xNU0xOTguMTksMzkyLjU5Yy0xNS41Ni0uNzEtMjQuMDItMy4zLTI5LjY0LTUuNDktNy40NS0yLjktMTIuNzctNi4zNi0xOC4zNi0xMS45NC01LjU5LTUuNTgtOS4wNS0xMC44OS0xMS45NC0xOC4zNS0yLjE5LTUuNjItNC43OC0xNC4wOC01LjQ5LTI5LjY0LS43Ny0xNi44My0uOTMtMjEuODgtLjkzLTY0LjUxcy4xNy00Ny42Ny45My02NC41MWMuNzEtMTUuNTYsMy4zMi0yNC4wMSw1LjQ5LTI5LjY0LDIuOS03LjQ1LDYuMzYtMTIuNzcsMTEuOTQtMTguMzZzMTAuODktOS4wNSwxOC4zNi0xMS45NGM1LjYyLTIuMTksMTQuMDgtNC43OCwyOS42NC01LjQ5LDE2LjgzLS43NywyMS44OC0uOTMsNjQuNDktLjkzczQ3LjY3LjE2LDY0LjUxLjkzYzE1LjU2LjcxLDI0LjAxLDMuMzIsMjkuNjQsNS40OSw3LjQ1LDIuODksMTIuNzcsNi4zNiwxOC4zNiwxMS45NCw1LjU5LDUuNTgsOS4wNCwxMC45MSwxMS45NCwxOC4zNiwyLjE5LDUuNjIsNC43OCwxNC4wOCw1LjQ5LDI5LjY0Ljc3LDE2Ljg0LjkzLDIxLjg4LjkzLDY0LjUxcy0uMTUsNDcuNjctLjkzLDY0LjUxYy0uNzEsMTUuNTYtMy4zMSwyNC4wMi01LjQ5LDI5LjY0LTIuOSw3LjQ1LTYuMzYsMTIuNzctMTEuOTQsMTguMzUtNS41OCw1LjU4LTEwLjkxLDkuMDQtMTguMzYsMTEuOTQtNS42MiwyLjE5LTE0LjA4LDQuNzgtMjkuNjQsNS40OS0xNi44My43Ny0yMS44OC45My02NC41MS45M3MtNDcuNjctLjE1LTY0LjQ5LS45M00xOTYuODYsMTA0LjAxYy0xNi45OS43Ny0yOC42LDMuNDctMzguNzQsNy40MS0xMC41LDQuMDctMTkuMzksOS41NC0yOC4yOCwxOC40MS04Ljg4LDguODctMTQuMzQsMTcuNzctMTguNDEsMjguMjgtMy45NSwxMC4xNS02LjY0LDIxLjc1LTcuNDEsMzguNzQtLjc5LDE3LjAyLS45NywyMi40Ni0uOTcsNjUuODFzLjE4LDQ4Ljc5Ljk3LDY1LjgxYy43NywxNi45OSwzLjQ3LDI4LjYsNy40MSwzOC43NCw0LjA3LDEwLjUsOS41MywxOS40MSwxOC40MSwyOC4yOCw4Ljg4LDguODcsMTcuNzcsMTQuMzIsMjguMjgsMTguNDEsMTAuMTYsMy45NSwyMS43NSw2LjY0LDM4Ljc0LDcuNDEsMTcuMDMuNzcsMjIuNDYuOTcsNjUuODEuOTdzNDguNzktLjE4LDY1LjgxLS45N2MxNi45OS0uNzcsMjguNi0zLjQ3LDM4Ljc0LTcuNDEsMTAuNS00LjA5LDE5LjM5LTkuNTQsMjguMjgtMTguNDFzMTQuMzItMTcuNzgsMTguNDEtMjguMjhjMy45NS0xMC4xNSw2LjY1LTIxLjc1LDcuNDEtMzguNzQuNzctMTcuMDMuOTUtMjIuNDYuOTUtNjUuODFzLS4xOC00OC43OS0uOTUtNjUuODFjLS43Ny0xNi45OS0zLjQ3LTI4LjYtNy40MS0zOC43NC00LjA5LTEwLjUtOS41NC0xOS4zOS0xOC40MS0yOC4yOC04Ljg3LTguODgtMTcuNzgtMTQuMzQtMjguMjYtMTguNDEtMTAuMTYtMy45NS0yMS43Ni02LjY1LTM4Ljc0LTcuNDEtMTcuMDItLjc4LTIyLjQ2LS45Ny02NS44LS45N3MtNDguNzkuMTgtNjUuODIuOTciLz4KPC9zdmc+"/></div>
+<div class="texto-contato">
+<small>Instagram</small>
+<strong>@benditobolo.bolaria</strong>
+<span>Veja novidades, sabores e bastidores.</span>
+</div>
+<span aria-hidden="true" class="seta-contato">›</span>
+</a>
+<a class="card-contato" href="https://wa.me/5511970521215" rel="noopener noreferrer" target="_blank">
+<div class="icone-contato icone-original"><img alt="WhatsApp" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMSA1MTEiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuNCBCdWlsZCAxMDkpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogdXJsKCNHcmFkaWVudGVfc2VtX25vbWVfNik7CiAgICAgIH0KCiAgICAgIC5zdDEgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9IkdyYWRpZW50ZV9zZW1fbm9tZV82IiBkYXRhLW5hbWU9IkdyYWRpZW50ZSBzZW0gbm9tZSA2IiB4MT0iMzI2LjkiIHkxPSI1MTMuMTQiIHgyPSIzMjYuOSIgeTI9Ii0xNDAuOTQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjExIDQwMC44OSkgc2NhbGUoLjc4IC0uNzgpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYxZmQ3ZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMyYmI4MjYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGlkPSJhIiBjbGFzcz0ic3QwIiBkPSJNNTEwLjk2LDM4MS4zMmMwLDIuOC0uMDksOC44Ny0uMjUsMTMuNTUtLjQxLDExLjQ3LTEuMzIsMjYuMjctMi43LDMzLjAxLTIuMDcsMTAuMTMtNS4xOSwxOS43LTkuMjUsMjcuNjYtNC44MSw5LjQyLTEwLjk1LDE3Ljg1LTE4LjI0LDI1LjEzLTcuMjgsNy4yNy0xNS43LDEzLjM4LTI1LjExLDE4LjE3LTgsNC4wOC0xNy42Myw3LjItMjcuODIsOS4yNi02LjY4LDEuMzUtMjEuMzYsMi4yNC0zMi43NiwyLjY0LTQuNjkuMTctMTAuNzYuMjUtMTMuNTUuMjVsLTI1MS42MS0uMDRjLTIuOCwwLTguODYtLjA5LTEzLjU1LS4yNS0xMS40Ny0uNDEtMjYuMjctMS4zMi0zMy4wMS0yLjY5LTEwLjEzLTIuMDctMTkuNy01LjE5LTI3LjY2LTkuMjUtOS40Mi00LjgxLTE3Ljg1LTEwLjk1LTI1LjEzLTE4LjI0LTcuMjctNy4yOC0xMy4zOC0xNS43LTE4LjE3LTI1LjExLTQuMDgtOC03LjItMTcuNjMtOS4yNi0yNy44Mi0xLjM1LTYuNjgtMi4yNC0yMS4zNi0yLjY0LTMyLjc2LS4xNy00LjY5LS4yNS0xMC43Ni0uMjUtMTMuNTVsLjA0LTI1MS42MWMwLTIuOC4wOS04Ljg3LjI1LTEzLjU1LjQxLTExLjQ3LDEuMzItMjYuMjcsMi43LTMzLjAxLDIuMDctMTAuMTMsNS4xOS0xOS43LDkuMjUtMjcuNjYsNC44MS05LjQyLDEwLjk1LTE3Ljg1LDE4LjI0LTI1LjEzLDcuMjgtNy4yNiwxNS43LTEzLjM4LDI1LjExLTE4LjE3LDgtNC4wOCwxNy42My03LjIsMjcuODItOS4yNiw2LjY4LTEuMzUsMjEuMzYtMi4yNCwzMi43Ni0yLjY0LDQuNjktLjE3LDEwLjc2LS4yNSwxMy41NS0uMjVsMjUxLjYxLjA0YzIuOCwwLDguODcuMDksMTMuNTUuMjUsMTEuNDcuNDEsMjYuMjcsMS4zMiwzMy4wMSwyLjcsMTAuMTMsMi4wNywxOS43LDUuMTksMjcuNjYsOS4yNSw5LjQyLDQuODEsMTcuODUsMTAuOTUsMjUuMTMsMTguMjQsNy4yNiw3LjI4LDEzLjM4LDE1LjcsMTguMTcsMjUuMTEsNC4wOCw4LDcuMiwxNy42Myw5LjI2LDI3LjgyLDEuMzUsNi42OCwyLjI0LDIxLjM2LDIuNjQsMzIuNzYuMTcsNC42OS4yNSwxMC43Ni4yNSwxMy41NWwtLjA0LDI1MS42MWgwWiIvPgogIDxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0zOTAuODgsMTIwLjg5Yy0zNC42LTM0LjYyLTgwLjYtNTMuNy0xMjkuNjItNTMuNzItMTAxLDAtMTgzLjIsODIuMTctMTgzLjI0LDE4My4xNy0uMDEsMzIuMjgsOC40Miw2My44LDI0LjQ2LDkxLjU4bC0yNiw5NC45Miw5Ny4xNC0yNS40N2MyNi43NiwxNC41OSw1Ni45LDIyLjI4LDg3LjU3LDIyLjNoLjA4YzEwMC45OSwwLDE4My4yLTgyLjE4LDE4My4yNC0xODMuMTguMDItNDguOTUtMTkuMDItOTQuOTctNTMuNjItMTI5LjU5aDBaTTI2MS4yNiw0MDIuNzNoLS4wNmMtMjcuMzMtLjAxLTU0LjEzLTcuMzUtNzcuNTItMjEuMjJsLTUuNTYtMy4zLTU3LjY0LDE1LjEyLDE1LjM5LTU2LjE4LTMuNjItNS43NmMtMTUuMjUtMjQuMjQtMjMuMy01Mi4yNi0yMy4yOS04MS4wMy4wMy04My45NSw2OC4zNi0xNTIuMjQsMTUyLjM2LTE1Mi4yNCw0MC42OC4wMiw3OC45MiwxNS44NywxMDcuNjcsNDQuNjUsMjguNzUsMjguNzgsNDQuNTgsNjcuMDMsNDQuNTcsMTA3LjcxLS4wMyw4My45NS02OC4zNiwxNTIuMjUtMTUyLjMsMTUyLjI1aDBaTTM0NC44LDI4OC43Yy00LjU4LTIuMjktMjcuMDktMTMuMzYtMzEuMjktMTQuODktNC4yLTEuNTMtNy4yNS0yLjI5LTEwLjMsMi4yOS0zLjA1LDQuNTgtMTEuODMsMTQuODktMTQuNSwxNy45NS0yLjY3LDMuMDUtNS4zNCwzLjQ0LTkuOTIsMS4xNS00LjU4LTIuMjktMTkuMzMtNy4xMi0zNi44Mi0yMi43Mi0xMy42MS0xMi4xNC0yMi44LTI3LjEzLTI1LjQ3LTMxLjcxLTIuNjctNC41OC0uMjgtNy4wNiwyLjAxLTkuMzQsMi4wNi0yLjA1LDQuNTgtNS4zNSw2Ljg3LTguMDIsMi4yOS0yLjY3LDMuMDUtNC41OCw0LjU4LTcuNjQsMS41My0zLjA1Ljc2LTUuNzMtLjM4LTguMDItMS4xNC0yLjI5LTEwLjMtMjQuODItMTQuMTItMzMuOTgtMy43Mi04LjkzLTcuNDktNy43Mi0xMC4zLTcuODYtMi42Ny0uMTMtNS43Mi0uMTYtOC43Ny0uMTZzLTguMDEsMS4xNS0xMi4yMSw1LjczLTE2LjAyLDE1LjY2LTE2LjAyLDM4LjE4LDE2LjQxLDQ0LjI5LDE4LjcsNDcuMzVjMi4yOSwzLjA1LDMyLjI4LDQ5LjI5LDc4LjIxLDY5LjExLDEwLjkyLDQuNzIsMTkuNDUsNy41MywyNi4xLDkuNjQsMTAuOTcsMy40OCwyMC45NSwyLjk5LDI4Ljg0LDEuODEsOC44LTEuMzEsMjcuMDktMTEuMDcsMzAuOS0yMS43NiwzLjgyLTEwLjY5LDMuODItMTkuODYsMi42Ny0yMS43NnMtNC4yLTMuMDUtOC43Ny01LjM1aDBaIi8+Cjwvc3ZnPg=="/></div>
+<div class="texto-contato">
+<small>WhatsApp</small>
+<strong>(11) 97052-1215</strong>
+</div>
+<span aria-hidden="true" class="seta-contato">›</span>
+</a>
+<div class="card-contato">
+<div class="icone-contato icone-original"><img alt="E-mail" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iQ2FtYWRhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDUxMSA1MTEiPgogIDwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAzMC42LjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiAyLjEuNCBCdWlsZCAxMDkpICAtLT4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLnN0MCB7CiAgICAgICAgZmlsbDogdXJsKCNHcmFkaWVudGVfc2VtX25vbWVfMjUpOwogICAgICB9CgogICAgICAuc3QxIHsKICAgICAgICBmaWxsOiAjZmZmOwogICAgICB9CiAgICA8L3N0eWxlPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJHcmFkaWVudGVfc2VtX25vbWVfMjUiIGRhdGEtbmFtZT0iR3JhZGllbnRlIHNlbSBub21lIDI1IiB4MT0iMzI2LjkiIHkxPSI1MTMuMTQiIHgyPSIzMjYuOSIgeTI9Ii0xNDAuOTQiIGdyYWRpZW50VHJhbnNmb3JtPSJ0cmFuc2xhdGUoLjExIDQwMC44OSkgc2NhbGUoLjc4IC0uNzgpIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzVlNTE5ZCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM1MjQ1ODYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgogIDxwYXRoIGlkPSJhIiBjbGFzcz0ic3QwIiBkPSJNNTEwLjk2LDM4MS4zMmMwLDIuOC0uMDksOC44Ny0uMjUsMTMuNTUtLjQxLDExLjQ3LTEuMzIsMjYuMjctMi43LDMzLjAxLTIuMDcsMTAuMTMtNS4xOSwxOS43LTkuMjUsMjcuNjYtNC44MSw5LjQyLTEwLjk1LDE3Ljg1LTE4LjI0LDI1LjEzLTcuMjgsNy4yNy0xNS43LDEzLjM4LTI1LjExLDE4LjE3LTgsNC4wOC0xNy42Myw3LjItMjcuODIsOS4yNi02LjY4LDEuMzUtMjEuMzYsMi4yNC0zMi43NiwyLjY0LTQuNjkuMTctMTAuNzYuMjUtMTMuNTUuMjVsLTI1MS42MS0uMDRjLTIuOCwwLTguODYtLjA5LTEzLjU1LS4yNS0xMS40Ny0uNDEtMjYuMjctMS4zMi0zMy4wMS0yLjY5LTEwLjEzLTIuMDctMTkuNy01LjE5LTI3LjY2LTkuMjUtOS40Mi00LjgxLTE3Ljg1LTEwLjk1LTI1LjEzLTE4LjI0LTcuMjctNy4yOC0xMy4zOC0xNS43LTE4LjE3LTI1LjExLTQuMDgtOC03LjItMTcuNjMtOS4yNi0yNy44Mi0xLjM1LTYuNjgtMi4yNC0yMS4zNi0yLjY0LTMyLjc2LS4xNy00LjY5LS4yNS0xMC43Ni0uMjUtMTMuNTVsLjA0LTI1MS42MWMwLTIuOC4wOS04Ljg3LjI1LTEzLjU1LjQxLTExLjQ3LDEuMzItMjYuMjcsMi43LTMzLjAxLDIuMDctMTAuMTMsNS4xOS0xOS43LDkuMjUtMjcuNjYsNC44MS05LjQyLDEwLjk1LTE3Ljg1LDE4LjI0LTI1LjEzLDcuMjgtNy4yNiwxNS43LTEzLjM4LDI1LjExLTE4LjE3LDgtNC4wOCwxNy42My03LjIsMjcuODItOS4yNiw2LjY4LTEuMzUsMjEuMzYtMi4yNCwzMi43Ni0yLjY0LDQuNjktLjE3LDEwLjc2LS4yNSwxMy41NS0uMjVsMjUxLjYxLjA0YzIuOCwwLDguODcuMDksMTMuNTUuMjUsMTEuNDcuNDEsMjYuMjcsMS4zMiwzMy4wMSwyLjcsMTAuMTMsMi4wNywxOS43LDUuMTksMjcuNjYsOS4yNSw5LjQyLDQuODEsMTcuODUsMTAuOTUsMjUuMTMsMTguMjQsNy4yNiw3LjI4LDEzLjM4LDE1LjcsMTguMTcsMjUuMTEsNC4wOCw4LDcuMiwxNy42Myw5LjI2LDI3LjgyLDEuMzUsNi42OCwyLjI0LDIxLjM2LDIuNjQsMzIuNzYuMTcsNC42OS4yNSwxMC43Ni4yNSwxMy41NWwtLjA0LDI1MS42MWgwWiIvPgogIDxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0zODkuMDQsMTgwLjE0Yy0xLjIxLTYuMS0zLjkxLTExLjY3LTcuNjktMTYuMjgtLjgtMS0xLjYzLTEuOS0yLjUzLTIuOC02LjY5LTYuNzItMTYuMDgtMTAuOTEtMjYuMzMtMTAuOTFoLTE5My45OWMtMTAuMjUsMC0xOS42MSw0LjE5LTI2LjMzLDEwLjkxLS45LjktMS43MywxLjgtMi41MywyLjgtMy43OCw0LjYxLTYuNDgsMTAuMTktNy42NiwxNi4yOC0uNDgsMi4zNS0uNzMsNC43OC0uNzMsNy4yNHYxMzYuMjVjMCw1LjIzLDEuMTEsMTAuMjUsMy4wOSwxNC43OSwxLjgzLDQuMzMsNC41NCw4LjI1LDcuODMsMTEuNTQuODMuODMsMS42NiwxLjYsMi41NywyLjM2LDYuNDQsNS4zNCwxNC43Niw4LjU2LDIzLjc2LDguNTZoMTkzLjk5YzkuMDEsMCwxNy4zNi0zLjIyLDIzLjc3LTguNTkuOS0uNzMsMS43My0xLjQ5LDIuNTYtMi4zMiwzLjI5LTMuMjksNS45OS03LjIxLDcuODYtMTEuNTR2LS4wM2MxLjk4LTQuNTQsMy4wNS05LjUzLDMuMDUtMTQuNzV2LTEzNi4yNWMwLTIuNDYtLjI0LTQuODktLjY5LTcuMjRaTTE0NS42NSwxNzQuNTJjMy4zMy0zLjMyLDcuOC01LjM0LDEyLjg1LTUuMzRoMTkzLjk5YzUuMDYsMCw5LjU3LDIuMDEsMTIuODUsNS4zNC41OS41OSwxLjE0LDEuMjUsMS42MywxLjkxbC0xMDEuNjgsODguNjFjLTIuOCwyLjQ2LTYuMjcsMy42Ny05LjgsMy42N3MtNi45Ni0xLjIxLTkuOC0zLjY3bC0xMDEuNjQtODguNjVjLjQ1LS42NiwxLTEuMjgsMS41OS0xLjg3Wk0xNDAuMzIsMzIzLjYzdi0xMjcuNTJsNzMuNTgsNjQuMTktNzMuNTQsNjQuMTJjLS4wNC0uMjQtLjA0LS41Mi0uMDQtLjc5Wk0zNTIuNSwzNDEuODFoLTE5My45OWMtMy4yOSwwLTYuMzgtLjg3LTkuMDEtMi4zOWw3Ny41OS02Ny42Miw3LjI0LDYuM2M2LjA2LDUuMjcsMTMuNjUsNy45NCwyMS4xNiw3Ljk0czE1LjE0LTIuNjcsMjEuMi03Ljk0bDcuMjQtNi4zLDc3LjU2LDY3LjYyYy0yLjYzLDEuNTItNS43MiwyLjM5LTkuMDEsMi4zOVpNMzcwLjY4LDMyMy42M2MwLC4yOCwwLC41NS0uMDQuNzlsLTczLjU0LTY0LjA4LDczLjU4LTY0LjE5djEyNy40OFoiLz4KPC9zdmc+"/></div>
+<div class="texto-contato">
+<small>E-mail</small>
+<strong>Em breve, um e-mail nosso para te atender.</strong>
+</div>
+</div>
+<div aria-label="Responsável pelo atendimento" class="card-contato" role="group">
+<div aria-hidden="true" class="icone-contato">R</div>
+<div class="texto-contato">
+<small>Quem atende</small>
+<strong>Regiane</strong>
+<span>Ela vai te ajudar com seu pedido.</span>
+</div>
+</div>
+<div class="card-horario">
+<small>Horário de atendimento</small>
+<strong>Segunda a sábado · 8h às 19h</strong>
+<span>Mensagens enviadas fora desse horário serão respondidas assim que possível.</span>
+</div>
+</div>
+</div>
 </section>
-
 <button aria-label="Abrir carrinho" class="barra-carrinho" id="abrirCarrinho" type="button">
 <span class="icone-carrinho">🛒</span>
 <span class="resumo-carrinho">
@@ -2267,6 +2488,16 @@
 </div>
 </div>
 <div class="rodape-carrinho">
+
+<div class="agendamento-pedido">
+<label for="dataPedido">Para quando é a encomenda?</label>
+<select aria-label="Escolher quando deseja a encomenda" id="opcaoDataPedido">
+<option value="hoje">Hoje</option>
+<option value="amanha">Amanhã</option>
+<option value="outra">Escolher outra data</option>
+</select>
+<input aria-label="Data da encomenda" hidden="" id="dataPedido" type="date"/>
+</div>
 <div class="linha-total">
 <span>Total</span>
 <strong id="totalCarrinho">R$ 0,00</strong>
@@ -2596,6 +2827,8 @@
         "",
         `• Preço total: ${moeda.format(total)}`,
         "",
+        `• Data desejada: ${obterTextoDataPedido()}`,
+        "",
         "Pode me confirmar a disponibilidade, por favor?"
       ].join("\n");
 
@@ -2633,6 +2866,126 @@
       });
     }
 
+
+
+    // Favoritos sem login: ficam salvos somente neste aparelho/navegador.
+    const CHAVE_FAVORITOS = "benditoBoloFavoritos";
+    let favoritos = [];
+
+    try {
+      favoritos = JSON.parse(localStorage.getItem(CHAVE_FAVORITOS) || "[]");
+      if (!Array.isArray(favoritos)) favoritos = [];
+    } catch {
+      favoritos = [];
+    }
+
+    function atualizarBotoesFavoritos() {
+      document.querySelectorAll(".botao-favorito").forEach(botao => {
+        const nome = botao.dataset.favorito;
+        const ativo = favoritos.includes(nome);
+        botao.classList.toggle("ativo", ativo);
+        botao.textContent = ativo ? "♥" : "♡";
+        botao.setAttribute("aria-pressed", String(ativo));
+        botao.title = ativo ? "Remover dos favoritos" : "Adicionar aos favoritos";
+      });
+    }
+
+    document.addEventListener("click", async (evento) => {
+      const botaoFavorito = evento.target.closest(".botao-favorito");
+      if (botaoFavorito) {
+        const nome = botaoFavorito.dataset.favorito;
+        favoritos = favoritos.includes(nome)
+          ? favoritos.filter(item => item !== nome)
+          : [...favoritos, nome];
+
+        localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify(favoritos));
+        atualizarBotoesFavoritos();
+        mostrarToast(
+          favoritos.includes(nome)
+            ? `${nome} salvo nos favoritos`
+            : `${nome} removido dos favoritos`
+        );
+        return;
+      }
+
+      const botaoCompartilhar = evento.target.closest(".botao-compartilhar");
+      if (!botaoCompartilhar) return;
+
+      const nome = botaoCompartilhar.dataset.compartilhar;
+      const url = `${window.location.origin}${window.location.pathname}#cardapio`;
+      const dados = {
+        title: `Bendito Bolo — ${nome}`,
+        text: `Olha esse ${nome} da Bendito Bolo 😍`,
+        url
+      };
+
+      try {
+        if (navigator.share) {
+          await navigator.share(dados);
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(`${dados.text}\n${dados.url}`);
+          mostrarToast("Link do produto copiado");
+        } else {
+          window.prompt("Copie o link para compartilhar:", dados.url);
+        }
+      } catch (erro) {
+        if (erro && erro.name !== "AbortError") {
+          mostrarToast("Não foi possível compartilhar agora");
+        }
+      }
+    });
+
+    atualizarBotoesFavoritos();
+
+    // Escolha da data da encomenda.
+    const opcaoDataPedido = document.getElementById("opcaoDataPedido");
+    const dataPedido = document.getElementById("dataPedido");
+
+    function dataLocalISO(data) {
+      const ano = data.getFullYear();
+      const mes = String(data.getMonth() + 1).padStart(2, "0");
+      const dia = String(data.getDate()).padStart(2, "0");
+      return `${ano}-${mes}-${dia}`;
+    }
+
+    function formatarDataPedido(valor) {
+      const [ano, mes, dia] = valor.split("-");
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    if (dataPedido) {
+      dataPedido.min = dataLocalISO(new Date());
+    }
+
+    if (opcaoDataPedido && dataPedido) {
+      opcaoDataPedido.addEventListener("change", () => {
+        const outraData = opcaoDataPedido.value === "outra";
+        dataPedido.hidden = !outraData;
+        if (outraData) {
+          dataPedido.focus();
+        }
+      });
+    }
+
+    function obterTextoDataPedido() {
+      if (!opcaoDataPedido) return "A combinar";
+
+      if (opcaoDataPedido.value === "hoje") {
+        return "Hoje";
+      }
+
+      if (opcaoDataPedido.value === "amanha") {
+        const amanha = new Date();
+        amanha.setDate(amanha.getDate() + 1);
+        return `Amanhã (${formatarDataPedido(dataLocalISO(amanha))})`;
+      }
+
+      if (dataPedido && dataPedido.value) {
+        return formatarDataPedido(dataPedido.value);
+      }
+
+      return "Data a combinar";
+    }
 </script>
 </body>
 </html>
