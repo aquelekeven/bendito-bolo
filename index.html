@@ -10,7 +10,7 @@
 <meta charset="utf-8"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<meta content="#ef2d63" name="theme-color">
+<meta content="#ef2d63" name="theme-color"/>
 <title>Bendito Bolo</title>
 <style>
     :root {
@@ -2404,8 +2404,107 @@
         font-size: 15px !important;
       }
     }
+
+    /* Navegação do carrossel somente na barra de progresso — v1.6 */
+    .produto .acoes-produto,
+    .produto .nav-produto {
+      display: none !important;
+    }
+
+    .progresso-produtos {
+      width: min(calc(100% - 24px), 520px) !important;
+      margin: 14px auto 24px !important;
+      padding: 0 !important;
+      display: block !important;
+    }
+
+    .progresso-produtos .trilho-progresso {
+      width: 100% !important;
+      height: auto !important;
+      overflow: visible !important;
+      background: transparent !important;
+      border-radius: 0 !important;
+    }
+
+    .linha-controles-carrossel {
+      width: 100% !important;
+      margin: 0 !important;
+      display: grid !important;
+      grid-template-columns: 42px minmax(0, 1fr) 42px !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+
+    .linha-controles-carrossel .controle-seta {
+      display: contents !important;
+    }
+
+    .linha-controles-carrossel .controle-progresso {
+      position: relative;
+      width: 100%;
+      height: 8px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(143, 33, 72, .14);
+    }
+
+    .linha-controles-carrossel #barraProgresso {
+      display: block !important;
+      position: absolute !important;
+      inset: 0 auto 0 0 !important;
+      height: 100% !important;
+      min-width: 12px;
+      border-radius: inherit;
+      background: var(--rosa);
+      transition: width .25s ease;
+    }
+
+    .linha-controles-carrossel .nav-produto {
+      position: static !important;
+      inset: auto !important;
+      transform: none !important;
+      display: grid !important;
+      place-items: center;
+      width: 42px !important;
+      height: 42px !important;
+      min-width: 42px !important;
+      min-height: 42px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      border-radius: 50% !important;
+      border: 1px solid rgba(143, 33, 72, .12) !important;
+      background: rgba(255,255,255,.92) !important;
+      color: var(--vinho) !important;
+      box-shadow: 0 6px 16px rgba(80, 9, 31, .10) !important;
+      font-size: 28px !important;
+      line-height: 1 !important;
+      cursor: pointer;
+    }
+
+    .linha-controles-carrossel .nav-produto:disabled {
+      opacity: .35;
+      cursor: default;
+    }
+
+    @media (max-width: 520px) {
+      .progresso-produtos {
+        width: min(calc(100% - 20px), 430px) !important;
+      }
+
+      .linha-controles-carrossel {
+        grid-template-columns: 38px minmax(0, 1fr) 38px !important;
+        gap: 9px !important;
+      }
+
+      .linha-controles-carrossel .nav-produto {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        min-height: 38px !important;
+      }
+    }
 </style>
-</meta></head>
+</head>
 <body data-aba="cardapio">
 <nav aria-label="Navegação principal" class="navegacao-site" role="tablist">
 <button aria-controls="paginaCardapio" aria-selected="true" class="botao-aba ativa" data-aba="cardapio" role="tab" type="button">
@@ -2445,9 +2544,7 @@
             Fatia caprichada com creme de leite Ninho e geleia de morango, equilibrando o doce com um toque frutado.
           </p>
 <div class="tag">Fatia individual · Lançamento</div>
-<div class="acoes-produto">
 
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article class="produto" data-preco="32" data-produto="Laranja" data-tipo="Bolo inteiro">
@@ -2459,11 +2556,7 @@
 </div>
 <p class="descricao">Bolo fofinho de laranja, leve e aromático.</p>
 <div class="tag">600g · Serve até 8 pessoas</div>
-<div class="acoes-produto">
-<button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
 
-<button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article class="produto" data-preco="32" data-produto="Milho" data-tipo="Bolo inteiro">
@@ -2475,11 +2568,7 @@
 </div>
 <p class="descricao">Bolo de milho macio, com aquele gostinho bem caseiro.</p>
 <div class="tag">600g · Serve até 8 pessoas</div>
-<div class="acoes-produto">
-<button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
 
-<button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article class="produto" data-preco="35" data-produto="Cenoura com brigadeiro de chocolate" data-tipo="Bolo inteiro">
@@ -2491,11 +2580,7 @@
 </div>
 <p class="descricao">Bolo de cenoura fofinho com cobertura cremosa de brigadeiro.</p>
 <div class="tag">600g · Serve até 8 pessoas</div>
-<div class="acoes-produto">
-<button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
 
-<button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article class="produto" data-preco="15" data-produto="Red Velvet" data-tipo="Fatia">
@@ -2507,11 +2592,7 @@
 </div>
 <p class="descricao">Recheio cremoso de cream cheese e buttercream — perfeito para quem gosta de doces mais azedinhos.</p>
 <div class="tag">Fatia individual</div>
-<div class="acoes-produto">
-<button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
 
-<button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article class="produto" data-preco="15" data-produto="Kinder Bueno" data-tipo="Fatia">
@@ -2523,11 +2604,7 @@
 </div>
 <p class="descricao">Fatia bem recheada, cremosa e inspirada no sabor Kinder Bueno.</p>
 <div class="tag">Fatia individual</div>
-<div class="acoes-produto">
-<button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
 
-<button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article class="produto" data-preco="15" data-produto="Brigadeiro com Maracujá" data-tipo="Fatia">
@@ -2539,11 +2616,7 @@
 </div>
 <p class="descricao">Chocolate intenso com o contraste azedinho e refrescante do maracujá.</p>
 <div class="tag">Fatia individual</div>
-<div class="acoes-produto">
-<button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button>
 
-<button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button>
-</div>
 <button class="pedir" type="button">Quero esse produto</button></div>
 </article>
 <article aria-label="Voltar para o início" class="produto card-voltar" id="voltarInicio" role="button" tabindex="0">
@@ -2556,9 +2629,9 @@
 </div>
 </article>
 </section>
-<div aria-hidden="true" class="progresso-produtos">
+<div class="progresso-produtos">
 <div class="trilho-progresso">
-<div class="linha-controles-carrossel"><div class="controle-seta controle-esquerda"><button aria-label="Produto anterior" class="nav-produto anterior" type="button">‹</button></div><div class="controle-progresso"><span class="controles-carrossel barra-progresso" id="barraProgresso"></span></div><div class="controle-seta controle-direita"><button aria-label="Próximo produto" class="nav-produto proximo" type="button">›</button></div></div>
+<div class="linha-controles-carrossel"><div class="controle-seta controle-esquerda"><button aria-label="Produto anterior" class="nav-produto anterior controle-global" type="button">‹</button></div><div class="controle-progresso"><span class="controles-carrossel barra-progresso" id="barraProgresso"></span></div><div class="controle-seta controle-direita"><button aria-label="Próximo produto" class="nav-produto proximo controle-global" type="button">›</button></div></div>
 </div>
 </div>
 <section aria-label="Informações adicionais" class="extras-home">
@@ -2834,11 +2907,6 @@
       slides.forEach((produto, i) => {
         produto.classList.toggle("ativo", i === indiceAtual);
 
-        const anterior = produto.querySelector(".nav-produto.anterior");
-        const proximo = produto.querySelector(".nav-produto.proximo");
-
-        if (anterior) anterior.disabled = indiceAtual === 0 && i === indiceAtual;
-        if (proximo) proximo.disabled = false;
       });
 
       const indiceVisivel = Math.min(indiceAtual + 1, totalProdutos);
@@ -2849,6 +2917,12 @@
         : 0;
 
       barraProgresso.style.width = `${progresso}%`;
+
+      const setaAnteriorGlobal = document.querySelector(".linha-controles-carrossel .nav-produto.anterior");
+      const setaProximaGlobal = document.querySelector(".linha-controles-carrossel .nav-produto.proximo");
+
+      if (setaAnteriorGlobal) setaAnteriorGlobal.disabled = indiceAtual <= 0;
+      if (setaProximaGlobal) setaProximaGlobal.disabled = indiceAtual >= totalSlides - 1;
     }
 
     function detectarProdutoCentral() {
@@ -2874,19 +2948,19 @@
       quadroCarrossel = requestAnimationFrame(detectarProdutoCentral);
     }, { passive: true });
 
-    carrossel.addEventListener("click", (evento) => {
-      const seta = evento.target.closest(".nav-produto");
 
-      if (seta) {
+    document.querySelectorAll(".linha-controles-carrossel .nav-produto").forEach(seta => {
+      seta.addEventListener("click", () => {
         const direcao = seta.classList.contains("anterior") ? -1 : 1;
         const destino = indiceAtual + direcao;
 
         if (destino >= 0 && destino < totalSlides) {
           centralizarProduto(destino);
         }
-        return;
-      }
+      });
+    });
 
+    carrossel.addEventListener("click", (evento) => {
       const botaoProduto = evento.target.closest(".pedir");
       if (!botaoProduto) return;
 
