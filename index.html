@@ -2582,6 +2582,25 @@
     body.modo-favoritos .progresso-produtos {
       display: none !important;
     }
+
+    .remover-filtro-favoritos {
+      margin-top: 14px;
+      min-height: 34px;
+      padding: 0 14px;
+      border: 1px solid rgba(143, 33, 72, .14);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--vinho);
+      font: inherit;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(80, 9, 31, .08);
+    }
+
+    .remover-filtro-favoritos:active {
+      transform: scale(.97);
+    }
 </style>
 </head>
 <body data-aba="cardapio">
@@ -2611,7 +2630,6 @@
 <h2>Nosso cardápio</h2>
 <span class="contador" id="contadorProduto">1 de 7</span>
 </div>
-
 <div aria-label="Filtrar produtos" class="filtro-produtos" role="group">
 <button aria-pressed="true" class="filtro-produto ativo" data-filtro="todos" type="button">Todos</button>
 <button aria-pressed="false" class="filtro-produto" data-filtro="favoritos" type="button">
@@ -2708,12 +2726,11 @@
 </div>
 </article>
 </section>
-
 <div class="estado-favoritos-vazio" hidden="" id="estadoFavoritosVazio">
 <div aria-hidden="true">♡</div>
 <strong>Nenhum favorito ainda</strong>
 <span>Toque no coração de um produto para salvar por aqui.</span>
-</div>
+<button class="remover-filtro-favoritos" id="removerFiltroFavoritos" type="button">Remover filtro</button></div>
 <div class="progresso-produtos">
 <div class="trilho-progresso">
 <div class="linha-controles-carrossel"><div class="controle-seta controle-esquerda"><button aria-label="Produto anterior" class="nav-produto anterior controle-global" type="button">‹</button></div><div class="controle-progresso"><span class="controles-carrossel barra-progresso" id="barraProgresso"></span></div><div class="controle-seta controle-direita"><button aria-label="Próximo produto" class="nav-produto proximo controle-global" type="button">›</button></div></div>
@@ -3421,6 +3438,15 @@
 
     atualizarContadorFavoritos();
     aplicarFiltroProdutos("todos");
+
+
+    const botaoRemoverFiltroFavoritos = document.getElementById("removerFiltroFavoritos");
+
+    if (botaoRemoverFiltroFavoritos) {
+      botaoRemoverFiltroFavoritos.addEventListener("click", () => {
+        aplicarFiltroProdutos("todos");
+      });
+    }
 </script>
 </body>
 </html>
